@@ -1,0 +1,5 @@
+.vagrant
+*.log
+ROMs/ROM*
+magic-lantern/
+qemu-eos/

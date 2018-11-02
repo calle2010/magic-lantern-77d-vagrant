@@ -1,0 +1,25 @@
+--- run_canon_fw.sh
++++ run_canon_fw.sh
+@@ -147,7 +147,7 @@
+   $QEMU_PATH/arm-softmmu/qemu-system-arm \
+     -drive if=sd,format=raw,file=sd.img \
+     -drive if=ide,format=raw,file=cf.img \
+-    -chardev socket,server,nowait,path=qemu.monitor$QEMU_JOB_ID,id=monsock \
++    -chardev socket,server,nowait,path=/tmp/qemu.monitor$QEMU_JOB_ID,id=monsock \
+     -mon chardev=monsock,mode=readline \
+     -name $CAM \
+     -M $*
+@@ -155,11 +155,11 @@
+ # note: QEMU monitor is redirected to Unix socket qemu.monitor
+ # so you can interact with the emulator with e.g. netcat:
+ #
+-#    echo "log io" | nc -U qemu.monitor
++#    echo "log io" | nc -U /tmp/qemu.monitor
+ #
+ # or, for interactive monitor console:
+ #
+-#    socat - UNIX-CONNECT:qemu.monitor
++#    socat - UNIX-CONNECT:/tmp/qemu.monitor
+ #
+ # you can, of course, redirect it with -monitor stdio or -monitor vl
+ # more info: http://nairobi-embedded.org/qemu_monitor_console.html
