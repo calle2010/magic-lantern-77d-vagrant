@@ -39,8 +39,8 @@ use Cwd;
 $firmware_basepath = getcwd;
  
 # adjust these for your needs (note final slash):
-#$path = "";
-$path = "$ENV{'HOME'}/bin/arm-none48/bin/";
+$path = "";
+#$path = "$ENV{'HOME'}/bin/arm-none48/bin/";
 
 # note on "strings": default is a minimum length of 4 chars.
 # So if u are hunting for e.g. "FI2" add -n3
