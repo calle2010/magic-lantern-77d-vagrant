@@ -34,6 +34,12 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell" do |s|
+    s.name = "environment_setup"
+    s.path = "provision/environment_setup.sh"
+    s.privileged = false
+  end
+
+  config.vm.provision "shell" do |s|
     s.name = "install_qemu"
     s.path = "provision/install_qemu.sh"
     s.privileged = false

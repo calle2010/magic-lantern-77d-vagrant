@@ -15,6 +15,8 @@ VagrantFile
 |
 |- qemu-eos/ # QEMU installation, will be created by provisioning
 |
+|- bin/ # useful executables like disassemblev7.pl
+|
 ```
 
 Note that while qemu-eos is visible in the file system of the host machine it is not
