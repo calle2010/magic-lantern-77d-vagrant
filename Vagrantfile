@@ -15,8 +15,7 @@ Vagrant.configure("2") do |config|
   end
 
  # install packages that install.sh would install for Ubuntu and ARM compiler option 1
-  config.vm.provision "shell" do |s|
-    s.name = "packages"
+  config.vm.provision "packages", type: "shell" do |s|
     s.path = "provision/packages.sh"
     s.privileged = true
   end
@@ -26,28 +25,24 @@ Vagrant.configure("2") do |config|
   # the location of the /vagrant folder in the guest
   vagrantFolder = "/vagrant"
 
-  config.vm.provision "shell" do |s|
-    s.name = "clone_ml"
+  config.vm.provision "clone_ml", type: "shell" do |s|
     s.path = "provision/clone_ml.sh"
     s.privileged = false
     s.env = { "TOP_FOLDER" => vagrantFolder }
   end
 
-  config.vm.provision "shell" do |s|
-    s.name = "environment_setup"
+  config.vm.provision "environment_setup", type: "shell" do |s|
     s.path = "provision/environment_setup.sh"
     s.privileged = false
   end
 
-  config.vm.provision "shell" do |s|
-    s.name = "install_qemu"
+  config.vm.provision "install_qemu", type: "shell" do |s|
     s.path = "provision/install_qemu.sh"
     s.privileged = false
     s.env = { "TOP_FOLDER" => vagrantFolder }
   end
 
-  config.vm.provision "shell" do |s|
-    s.name = "compile_qemu_77D"
+  config.vm.provision "compile_qemu_77D", type: "shell" do |s|
     s.path = "provision/compile_qemu_77D.sh"
     s.privileged = false
     s.env = { "TOP_FOLDER" => vagrantFolder }
