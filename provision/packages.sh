@@ -2,7 +2,6 @@
 
 echo install packages needed for Magic Lantern development and qemu
 
-#dpkg --add-architecture i386
 apt-get update
 sudo apt-get install -y \
     build-essential \
