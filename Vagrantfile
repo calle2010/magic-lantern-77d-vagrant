@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   
   config.vagrant.plugins = ["vagrant-vbguest", "vagrant-reload"]
 
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/bionic64"
 
   config.vm.provider "virtualbox" do |v|
     v.gui = true

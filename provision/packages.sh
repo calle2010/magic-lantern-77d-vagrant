@@ -2,10 +2,12 @@
 
 echo install packages needed for Magic Lantern development and qemu
 
-dpkg --add-architecture i386
+#dpkg --add-architecture i386
 apt-get update
 sudo apt-get install -y \
     build-essential \
+    moreutils \
+    colorized-logs \
     flex \
     bison \
     mercurial \
@@ -22,7 +24,7 @@ sudo apt-get install -y \
     python \
     python-pip \
     python-docutils \
-    gdb-arm-none-eabi:i386 \
+    gdb-multiarch \
     gcc-arm-none-eabi \
     libnewlib-arm-none-eabi \
     python-dev \
