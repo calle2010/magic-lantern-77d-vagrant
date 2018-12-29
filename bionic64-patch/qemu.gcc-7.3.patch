@@ -1,0 +1,64 @@
+diff --git a/configure b/configure
+index b9552fd..d9d19f3 100755
+--- a/configure
++++ b/configure
+@@ -3612,7 +3612,7 @@ fi
+ # check if memfd is supported
+ memfd=no
+ cat > $TMPC << EOF
+-#include <sys/memfd.h>
++#include <sys/mman.h>
+ 
+ int main(void)
+ {
+@@ -4493,6 +4493,20 @@ if test "$fortify_source" != "no"; then
+   fi
+ fi
+ 
++##########################################
++ # check for sysmacros.h
++
++have_sysmacros=no
++cat > $TMPC << EOF
++#include <sys/sysmacros.h>
++int main(void) {
++    return makedev(0, 0);
++}
++EOF
++if compile_prog "" "" ; then
++    have_sysmacros=yes
++fi
++
+ ##########################################
+ # End of CC checks
+ # After here, no more $cc or $ld runs
+@@ -5385,6 +5399,14 @@ if test "$rdma" = "yes" ; then
+   echo "CONFIG_RDMA=y" >> $config_host_mak
+ fi
+ 
++if test "$have_af_vsock" = "yes" ; then
++   echo "CONFIG_AF_VSOCK=y" >> $config_host_mak
++ fi
++
++ if test "$have_sysmacros" = "yes" ; then
++   echo "CONFIG_SYSMACROS=y" >> $config_host_mak
++ fi
++
+ # Hold two types of flag:
+ #   CONFIG_THREAD_SETNAME_BYTHREAD  - we've got a way of setting the name on
+ #                                     a thread we have a handle to
+diff --git a/include/sysemu/os-posix.h b/include/sysemu/os-posix.h
+index f131521..41a73cf 100644
+--- a/include/sysemu/os-posix.h
++++ b/include/sysemu/os-posix.h
+@@ -28,6 +28,10 @@
+ 
+ #include <sys/time.h>
+ 
++#ifdef CONFIG_SYSMACROS
++#include <sys/sysmacros.h>
++#endif
++
+ void os_set_line_buffering(void);
+ void os_set_proc_name(const char *s);
+ void os_setup_signal_handling(void);
