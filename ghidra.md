@@ -28,7 +28,7 @@ which can be used to create the copies of the ROM0.BIN file.
 - Run the CodeBrowser tool
 - Import ROM0.BIN
   - Format is "RAW Binary"
-  - Select language "ARM v7LEInstruction" which is big endian data and little endian code, and compiler "Visual Studio"
+  - Select language "ARM v7 little endian", and compiler "default"
   - In options enter name ```rom0``` and base address ```0xe0000000```
   - _Important_ Do not run the analyzer yet!
 - Add the copied ROMs to their respective base addresses:
@@ -49,10 +49,16 @@ which can be used to create the copies of the ROM0.BIN file.
 - Select Analysis -> One Shot 
   - -> ASCII Strings
   - -> Embdedded Media
-- Save the project: File -> Save All
+- After the analysis is done save the project: File -> Save All
 
 ## Start disassembling the bootloader
 
-- Go to address ```0xe00400000``` (in ROM0.BIN)
+- Go to address ```0xe0000000```
 - Press "L" to enter the label "bootloader" to make it easier to return here (e. g. with GoTo command on key "G")
-- Press "F12" or right click and select "Dissassemble Thumb"
+- Press "F11" or right click and select "Disassemble ARM"
+
+## Start disassembling the firmware
+
+- Go to address ```0xe0040000```
+- Press "L" to enther the label "firmware"
+- Press "F12" or right click and select "Disassamble Thumb"
