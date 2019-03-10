@@ -1,4 +1,5 @@
 .vagrant
+.DS_Store
 *.log
 ROMs/ROM*
 magic-lantern/
