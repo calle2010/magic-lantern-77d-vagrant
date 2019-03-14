@@ -1,6 +1,6 @@
 .vagrant
 .DS_Store
 *.log
-ROMs/ROM*
+ROMs/
 magic-lantern/
 qemu-eos/
