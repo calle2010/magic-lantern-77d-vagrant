@@ -20,7 +20,7 @@ VagrantFile
 ```
 
 Note that while qemu-eos is visible in the file system of the host machine it is not
-executable in the host environment, unless the operating system and architecture are 
+executable in the host environment, unless the operating system and architecture are
 identical!
 
 # Vagrant Plugin Configuration
@@ -49,13 +49,15 @@ This will take some time to complete the provisioning:
 
 # Using the Vagrant machine
 
-Login to command line with ```vagrant ssh```
-
 After the provisioning has been completed:
 - login to GUI with vagrant / vagrant
-- on first start you may want to configure your keyboard layout
+- on first start you should configure your keyboard layout
 
 ```sudo dpkg-reconfigure keyboard-configuration```
+
+- also you should consider to set  the correct timezone
+
+```sudo dpkg-reconfigure tzdata```
 
 - a system restart may be required for this to take effect in X11: ```vagrant reload```
 
@@ -70,7 +72,6 @@ After the provisioning has been completed:
 For VirtualBox in MacOs the the host key is the right Cmd key. Press it to realease
 the focus from the guest window.
 
-For QEMU in X11 press Ctrl+Alt+G to release the focus from the ML window
+For QEMU in X11 press Ctrl+Alt+G to release the focus from the ML window.
 
-If the VirtualBox window is set to fullscreen or resized before ```startx``` is used
-the X11 environment will use the whole window size.
+You can login to the command line with ```vagrant ssh```.
