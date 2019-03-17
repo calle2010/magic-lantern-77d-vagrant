@@ -4,3 +4,4 @@
 ROMs/
 magic-lantern/
 qemu-eos/
+bin/arm-none-eabi-gdb
