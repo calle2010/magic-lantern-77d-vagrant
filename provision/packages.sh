@@ -27,4 +27,5 @@ sudo apt-get install -y \
     gcc-arm-none-eabi \
     libnewlib-arm-none-eabi \
     python-dev \
-    xfce4
+    xfce4 \
+    zip
