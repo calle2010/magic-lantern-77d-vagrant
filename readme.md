@@ -65,7 +65,30 @@ After the provisioning has been completed:
 - run a terminal
 - start QEMU from the terminal to be able to see graphical output
 
-```./run_canon_fw.sh 77D,firmware="boot=1"```
+```./run_canon_fw.sh 77D,firmware="boot=0"```
+
+# Compile and run Magic Lantern
+
+To avoid issues with modules in the Makefile at least one must be build. For this
+
+```
+$ cd /vagrant/magic-lantern/platform/5D3.113
+$ make clean && make zip ML_MODULES=arkanoid
+```
+
+Then compile and install to Qemu SD card the minimal-d78:
+
+```
+$ cd /vagrant/magic-lantern/platform/77D.102/
+$ make clean; make install_qemu CONFIG_QEMU=y ML_MODULES=
+```
+
+Then run it in Qemu
+
+```
+$ cd /vagrant/qemu-eor
+$ ./run_canon_fw.sh 77D,firmware="boot=1" -s -S & gdb-multiarch -x 77D/patches.gdb
+```
 
 # Tipps
 
