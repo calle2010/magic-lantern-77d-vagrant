@@ -28,4 +28,5 @@ sudo apt-get install -y \
     libnewlib-arm-none-eabi \
     python-dev \
     xfce4 \
-    zip
+    zip \
+    tortoisehg
