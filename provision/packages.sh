@@ -4,29 +4,29 @@ echo install packages needed for Magic Lantern development and qemu
 
 apt-get update
 sudo apt-get install -y \
+    bison \
     build-essential \
-    moreutils \
     colorized-logs \
     flex \
-    bison \
-    mercurial \
-    pkg-config \
-    libtool \
+    gcc-arm-none-eabi \
+    gdb-multiarch \
     git \
     libglib2.0-dev \
-    libpixman-1-dev \
-    zlib1g-dev \
     libgtk2.0-dev \
-    xz-utils \
+    libnewlib-arm-none-eabi \
+    libpixman-1-dev \
+    libtool \
+    mercurial \
+    moreutils \
     mtools \
     netcat-openbsd \
+    pkg-config \
     python \
-    python-pip \
-    python-docutils \
-    gdb-multiarch \
-    gcc-arm-none-eabi \
-    libnewlib-arm-none-eabi \
     python-dev \
-    xfce4 \
-    zip \
+    python-docutils \
+    python-pip \
     tortoisehg
+    xfce4 \
+    xz-utils \
+    zip \
+    zlib1g-dev
