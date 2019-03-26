@@ -14,6 +14,9 @@ Vagrant.configure("2") do |config|
     v.cpus = 2
   end
 
+  # for hg serve
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+
  # install packages that install.sh would install for Ubuntu and ARM compiler option 1
   config.vm.provision "packages", type: "shell" do |s|
     s.path = "provision/packages.sh"
