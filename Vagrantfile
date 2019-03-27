@@ -28,6 +28,11 @@ Vagrant.configure("2") do |config|
   # the location of the /vagrant folder in the guest
   vagrantFolder = "/vagrant"
 
+  config.vm.provision "configure_hg", type: "shell" do |s|
+    s.path = "provision/configure_hg.sh"
+    s.privileged = true
+  end
+
   config.vm.provision "clone_ml", type: "shell" do |s|
     s.path = "provision/clone_ml.sh"
     s.privileged = false
