@@ -47,7 +47,15 @@ which can be used to create the copies of the ROM0.BIN file.
   - TODO: can this be scripted in Ghidra?
 - Add ROM1.BIN as
   - ```rom1xF0000000``` at base address 0xF0000000
+- In the memory map set the areas loaded at ```0xE0000000``` and ```0xF0000000``` as read-only (remove the write flag).
+  This will improve decompilation results.
 - Do not auto analyze any of the files!
+- Select Edit -> Options for ROM0.BIN
+  - In Analyzers section uncheck "Non-Returning Functions - Discovered".
+    It seems to be wrong most of the times, breaking the in the decompiler.
+  - In Ghidra 9.0 and 9.0.1 this setting can't be saved (Apply button is gray).
+    As a workaround, start te auto analyzer with this option disabled, but stop the
+    analysis immediately again.
 - Select Analysis -> One Shot
   - -> ASCII Strings
   - -> Embdedded Media
@@ -59,9 +67,6 @@ which can be used to create the copies of the ROM0.BIN file.
 - Press "L" to enter the label "bootloader" to make it easier to return here (e. g. with GoTo command on key "G")
 - Press "F11" or right click and select "Disassemble ARM"
 
-- Go to address ```0x40100000```
-- Press "F12" or right click and select "Disassemble Thumb"
-
 - Go to address ```0x00100000```
 - Press "F12" or right click and select "Disassemble Thumb"
 
@@ -71,3 +76,4 @@ which can be used to create the copies of the ROM0.BIN file.
 - Press "L" to enther the label "firmware"
 - Press "F12" or right click and select "Disassamble Thumb"
 - Ghidra will analyze all referenced code that it can find, so this will take a while.
+- Don't forget to save after the analyzer is done.
