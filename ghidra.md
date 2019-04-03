@@ -77,3 +77,24 @@ which can be used to create the copies of the ROM0.BIN file.
 - Press "F12" or right click and select "Disassamble Thumb"
 - Ghidra will analyze all referenced code that it can find, so this will take a while.
 - Don't forget to save after the analyzer is done.
+
+## Find more code areas which haven't been disassembled yet
+
+Many functions will not be found yet. To get better cross-reference results it makes sense to analyze more of the code.
+
+- look for instruction patterns like
+  ```
+  push {...}
+  mov
+  ```
+  or
+  ```
+  push {...}
+  mov.w
+  ```
+  etc.
+- select one of these occurence
+- use "Search for Instruction Patterns" with operands masked
+- select all in the list
+- right click -> make selection
+- in ROM listing window, press F12 to start analyzing all selected places
