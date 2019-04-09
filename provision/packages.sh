@@ -25,8 +25,8 @@ sudo apt-get install -y \
     python-dev \
     python-docutils \
     python-pip \
-    python3-termcolor
-    tortoisehg
+    python3-termcolor \
+    tortoisehg \
     xfce4 \
     xz-utils \
     zip \

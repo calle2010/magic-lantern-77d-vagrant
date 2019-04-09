@@ -55,7 +55,7 @@ After the provisioning has been completed:
 
 ```sudo dpkg-reconfigure keyboard-configuration```
 
-- also you should consider to set  the correct timezone
+- also you should consider to set the correct timezone
 
 ```sudo dpkg-reconfigure tzdata```
 
