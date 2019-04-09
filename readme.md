@@ -69,12 +69,10 @@ After the provisioning has been completed:
 
 # Compile and run Magic Lantern
 
-To avoid issues with modules in the Makefile at least one must be build. For this
-
-```
-$ cd /vagrant/magic-lantern/platform/5D3.113
-$ make clean && make zip ML_MODULES=arkanoid
-```
+To avoid issues with modules as long as none has been built
+change the modules/Makefile by putting a hyphen in front 
+of line 31. See
+https://bitbucket.org/calle2010/magic-lantern/commits/7c425ae2c0d0e17855e4811dcb6ac0ae998dc00f
 
 Then compile and install to Qemu SD card the minimal-d78:
 
