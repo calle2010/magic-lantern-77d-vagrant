@@ -64,8 +64,8 @@ which can be used to create the copies of the ROM0.BIN file.
   - In Analyzers section uncheck "Non-Returning Functions - Discovered".
     It seems to be wrong most of the times, breaking the in the decompiler.
   - In Ghidra 9.0 and 9.0.1 this setting can't be saved (Apply button is gray).
-    As a workaround, start te auto analyzer with this option disabled, but stop the
-    analysis immediately again.
+    As a workaround, you can go to another page, e. g. Disassembler, change something
+    and press "Apply". This will save the change for the analyzer as well.
 - Select Analysis -> One Shot
   - -> ASCII Strings
   - -> Embedded Media
@@ -106,7 +106,7 @@ See also the Ghidra cheat sheet at https://ghidra-sre.org/CheatSheet.html
 
 ## Analyzer further stubs
 - Find the stubs.S for your camera, and for every address that looks like a code address,
-  do G, L (set label to stubs name), D
+  do G, L (set label to stubs name), F12
 - eg for 200D, stubs.S has this line:
   - NSTUB(0xE00400FD,  cstart)
   - So G 0xe00400fd, L "cstart", F12
