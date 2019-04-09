@@ -8,4 +8,7 @@ cat >/etc/mercurial/hgrc.d/vagrant.rc <<ENDHGRC
 rebase =
 shelve =
 strip =
+
+[alias]
+logf = log -f
 ENDHGRC
