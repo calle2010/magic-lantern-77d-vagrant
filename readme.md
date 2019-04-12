@@ -1,13 +1,18 @@
 # Purpose
 
 Create a build and test environment for Magic Lantern 77D development in one step.
+It should be good for other models as well.
 
 # Directory structure
 
 ```
 VagrantFile
 |
-|- ROMs/ # put your firmware ROM files here before provisioning
+|- ROMs/ # put your firmware ROM into the model directories
+|  |
+|  |- 77D/
+|  |- 200D/
+|  \...
 |
 |- provision/ # scripts to setup the guest Vagrant machine
 |
@@ -35,7 +40,7 @@ $ vagrant plugin install vagrant-reload
 
 # Provisioning of the Vagrant machine
 
-First copy your ROM files to ROMs directory.
+First copy your ROM files to model-specific subdirectory in ROMs/.
 
 Next execute ```vagrant up```
 This will take some time to complete the provisioning:
