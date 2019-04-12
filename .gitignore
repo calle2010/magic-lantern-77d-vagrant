@@ -3,5 +3,5 @@
 *.log
 ROMs/
 magic-lantern/
-qemu-eos/
+qemu-eos*/
 bin/arm-none-eabi-gdb
