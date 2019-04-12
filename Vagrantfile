@@ -5,17 +5,17 @@ Vagrant.configure("2") do |config|
   
   config.vagrant.plugins = ["vagrant-vbguest", "vagrant-reload"]
 
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/cosmic64"
 
   config.vm.provider "virtualbox" do |v|
     v.gui = true
-    v.name = "Magic Lantern Build Environment"
+    v.name = "Magic Lantern Build Environment - Cosmic64"
     v.memory = 4096
     v.cpus = 2
   end
 
   # for hg serve
-  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 8000, host: 8001
 
   # install packages that install.sh would install for Ubuntu and ARM compiler option 1
   config.vm.provision "packages", type: "shell" do |s|
