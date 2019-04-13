@@ -2,6 +2,6 @@
 .DS_Store
 *.log
 ROMs/
-magic-lantern/
+magic-lantern*/
 qemu-eos*/
 bin/arm-none-eabi-gdb
