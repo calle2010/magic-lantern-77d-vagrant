@@ -1,1 +1,4 @@
-{ BasedOnStyle: LLVM, IndentWidth: 4, PointerBindsToType: true, BreakBeforeBraces: Allman }
+BasedOnStyle: LLVM
+IndentWidth: 4
+PointerBindsToType: true
+BreakBeforeBraces: Allman
