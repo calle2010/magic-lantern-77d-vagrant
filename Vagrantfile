@@ -2,16 +2,32 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  
-  config.vagrant.plugins = ["vagrant-vbguest", "vagrant-reload"]
 
-  config.vm.box = "ubuntu/bionic64"
+  # VirtualBox creates shared /vagrant folder by default
+  vagrantFolder = "/vagrant"
 
-  config.vm.provider "virtualbox" do |v|
-    v.gui = true
-    v.name = "Magic Lantern Build Environment"
-    v.memory = 4096
-    v.cpus = 2
+  config.vm.provider "virtualbox" do |vbox,override|
+    override.vm.box = "ubuntu/bionic64"
+    override.vagrant.plugins = ["vagrant-vbguest", "vagrant-reload"]
+    vbox.gui = true
+    vbox.name = "ML Build Environment"
+    vbox.memory = 4096
+    vbox.cpus = 2
+  end
+
+  # for easier usage with Hyper-V set environment variable
+  # in Windows configuration:
+  # VAGRANT_DEFAULT_PROVIDER=hyperv
+
+  config.vm.provider "hyperv" do |hv,override|
+    override.vm.box = "generic/ubuntu1804"
+    override.vagrant.plugins = ["vagrant-reload"]
+    hv.vmname = "ML Build Environment"
+    hv.memory = 1024
+    hv.maxmemory = 4096
+    hv.cpus = 2
+    hv.auto_stop_action= "Save"
+    override.vm.synced_folder ".", "/vagrant", type: "smb"
   end
 
   # for hg serve
@@ -35,14 +51,12 @@ Vagrant.configure("2") do |config|
   config.vm.provision "environment_setup", type: "shell" do |s|
     s.path = "provision/environment_setup.sh"
     s.privileged = false
+    s.env = { "TOP_FOLDER" => vagrantFolder }
   end
 
   # provisioning steps to setup Qemu
-  # the scripts below can be used also to install 
+  # the scripts below can be used also to install
   # ML and qemu to the home directory of the vagrant user
-
-  # the location of the /vagrant folder in the guest
-  vagrantFolder = "/vagrant"
 
   config.vm.provision "clone_ml", type: "shell" do |s|
     s.path = "provision/clone_ml.sh"
